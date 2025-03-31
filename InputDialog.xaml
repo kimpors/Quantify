@@ -5,7 +5,7 @@
         xmlns:local="clr-namespace:Quantify"
         Title="Dialog" Height="120" Width="200"
         WindowStyle="None" MouseLeftButtonDown="Drag" Background="#333"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" Loaded="LoadedWindow">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" CornerRadius="10" CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
@@ -21,7 +21,6 @@
             <RowDefinition Height="40"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="-" Width="40" Height="40"
                 BorderBrush="Transparent" Background="Transparent"
@@ -31,7 +30,7 @@
                 Click="Close" Foreground="White"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <TextBox x:Name="input" Margin="30,10,30,0"/>
+            <TextBox x:Name="input" KeyDown="IsEnter" Margin="30,10,30,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
                 <Button Click="OkResult" Margin="0,0,30,0">Ok</Button>
                 <Button Click="CancelResult">Cancel</Button>
