@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
+using Newtonsoft.Json;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -10,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Quantify;
+using System.IO;
 
 namespace Quantify;
 
@@ -19,20 +21,22 @@ namespace Quantify;
 public partial class MainWindow : Window
 {
     private ObservableCollection<Item> _items;
+    private const string folderPath = "C:\\ProgramData\\Quantify";
+    private const string filePath = folderPath + "\\data.dat";
     public MainWindow()
     {
         InitializeComponent();
+        _items = new ObservableCollection<Item>();
 
-        _items = new ObservableCollection<Item>
+        if (!Directory.Exists(folderPath))
         {
-            new Item { Name = "Item 1", Count = 0 },
-            new Item { Name = "Item 2", Count = 1 },
-            new Item { Name = "Item 3", Count = 2 },
-            new Item { Name = "Item 3", Count = 2 },
-            new Item { Name = "Item 3", Count = 2 },
-            new Item { Name = "Item 3", Count = 2 },
-            new Item { Name = "Item 3", Count = 2 }
-        };
+            Directory.CreateDirectory(folderPath);
+        }
+        else if (File.Exists(filePath))
+        {
+            string json = Encoding.UTF8.GetString(File.ReadAllBytes(filePath));
+            _items = JsonConvert.DeserializeObject<ObservableCollection<Item>>(json);
+        }
 
         ItemList.ItemsSource = _items;
     }
@@ -67,6 +71,14 @@ public partial class MainWindow : Window
     }
     private void Close(object sender, RoutedEventArgs e)
     {
+        string json = JsonConvert.SerializeObject(_items);
+
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+
+        File.WriteAllBytes(filePath, Encoding.UTF8.GetBytes(json));
         Close();
     }
     private void Drag(object sender, RoutedEventArgs e)
