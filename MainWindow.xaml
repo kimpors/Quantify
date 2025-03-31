@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Quantify"
-        Title="Quantify" Height="300" Width="400"
+        Title="Quantify" Height="350" Width="400"
         WindowStyle="None" MouseLeftButtonDown="Drag" Background="#333">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" CornerRadius="10" CaptionHeight="0"/>
@@ -21,6 +21,18 @@
             <Button Content="X" Width="40" Height="40"
                 BorderBrush="Transparent" Background="Transparent"
                 Click="Close" Foreground="White"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <ListBox Name="ItemList" Height="250" VerticalAlignment="Top">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                            <TextBox Text="{Binding Count}" Width="200" Margin="5"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </StackPanel>
     </Grid>
 </Window>

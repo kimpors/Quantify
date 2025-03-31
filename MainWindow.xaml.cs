@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.ObjectModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Quantify;
 
 namespace Quantify;
 
@@ -16,9 +18,23 @@ namespace Quantify;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private ObservableCollection<Item> _items;
     public MainWindow()
     {
         InitializeComponent();
+
+        _items = new ObservableCollection<Item>
+        {
+            new Item { Name = "Item 1", Count = 0 },
+            new Item { Name = "Item 2", Count = 1 },
+            new Item { Name = "Item 3", Count = 2 },
+            new Item { Name = "Item 3", Count = 2 },
+            new Item { Name = "Item 3", Count = 2 },
+            new Item { Name = "Item 3", Count = 2 },
+            new Item { Name = "Item 3", Count = 2 }
+        };
+
+        ItemList.ItemsSource = _items;
     }
 
     private void Minimize(object sender, RoutedEventArgs e)
