@@ -20,4 +20,17 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+
+    private void Minimize(object sender, RoutedEventArgs e)
+    {
+        WindowState = WindowState.Minimized;
+    }
+    private void Close(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
+    private void Drag(object sender, RoutedEventArgs e)
+    {
+        DragMove();
+    }
 }
