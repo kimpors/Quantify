@@ -44,6 +44,18 @@ public partial class MainWindow : Window
             _items.Add(new Item { Name = dialog.Result, Count = 0 });
         }
     }
+    private void Rename(object sender, RoutedEventArgs e)
+    {
+        InputDialog dialog = new();
+        Item item = ItemList.SelectedItem as Item; 
+
+        if (item == null) return;
+
+        if (dialog.ShowDialog() ?? false)
+        {
+            item.Name = dialog.Result;
+        }
+    }
     private void Remove(object sender, RoutedEventArgs e)
     {
         _items.Remove(ItemList.SelectedItem as Item);
