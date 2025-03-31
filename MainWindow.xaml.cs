@@ -38,7 +38,11 @@ public partial class MainWindow : Window
     }
     private void Add(object sender, RoutedEventArgs e)
     {
-        _items.Add(new Item { Name = "hello", Count = 0 });
+        InputDialog dialog = new();
+        if (dialog.ShowDialog() ?? false)
+        {
+            _items.Add(new Item { Name = dialog.Result, Count = 0 });
+        }
     }
     private void Remove(object sender, RoutedEventArgs e)
     {
