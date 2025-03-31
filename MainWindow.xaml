@@ -1,0 +1,10 @@
+﻿<Window x:Class="Quantify.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quantify"
+        Title="Quantify" Height="300" Width="400">
+    <Grid>
+
+    </Grid>
+</Window>
