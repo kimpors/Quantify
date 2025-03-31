@@ -4,7 +4,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Quantify"
         Title="Dialog" Height="120" Width="200"
-        WindowStyle="None" MouseLeftButtonDown="Drag" Background="#333">
+        WindowStyle="None" MouseLeftButtonDown="Drag" Background="#333"
+        ResizeMode="NoResize">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" CornerRadius="10" CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
