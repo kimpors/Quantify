@@ -36,6 +36,14 @@ public partial class MainWindow : Window
 
         ItemList.ItemsSource = _items;
     }
+    private void Add(object sender, RoutedEventArgs e)
+    {
+        _items.Add(new Item { Name = "hello", Count = 0 });
+    }
+    private void Remove(object sender, RoutedEventArgs e)
+    {
+        _items.Remove(ItemList.SelectedItem as Item);
+    }
 
     private void Minimize(object sender, RoutedEventArgs e)
     {
